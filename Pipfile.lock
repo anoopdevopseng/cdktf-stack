@@ -43,12 +43,12 @@
         },
         "cdktf-cdktf-provider-google": {
             "hashes": [
-                "sha256:be8624ce91147bd1fb9972783381374f83521c40ff922df207c7d089faca0a46",
-                "sha256:d40662c94ce790f484c7807af7188dca34a2e4838cb17788ef55a5beded7de56"
+                "sha256:73773b91f854b6820ef4b3614be1985ee34df5f5fa21936e31283268635a406b",
+                "sha256:977eae0ad4d5da685c05c751b8254cafc5a275a7cdba9176412eb892a5a994ae"
             ],
             "index": "pypi",
             "markers": "python_version ~= '3.9'",
-            "version": "==16.5.0"
+            "version": "==16.6.0"
         },
         "colorama": {
             "hashes": [
