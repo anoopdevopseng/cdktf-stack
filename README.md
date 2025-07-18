@@ -3,6 +3,15 @@
 ## Run the project 
 
 ```
+# For windows powershell, set the environment in current directory
+$env:PIPENV_VENV_IN_PROJECT=1
+
+# Optional If pipenv install cache the old paths  
+$env:PIPENV_IGNORE_VIRTUALENVS = "1"
+
+# For linux/mac
+export PIPENV_VENV_IN_PROJECT=1
+
 pipenv install
 ```
 
