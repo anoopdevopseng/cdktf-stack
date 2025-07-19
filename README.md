@@ -2,6 +2,13 @@
 
 ## Run the project 
 
+# Requirements
+```
+python version: 3.13
+ckdtf version:  0.21.0
+cdktff-cli:     0.21.0
+```
+
 # For windows powershell, 
 
 ```
