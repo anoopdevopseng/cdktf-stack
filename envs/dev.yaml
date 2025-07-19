@@ -12,7 +12,7 @@ vpcs:
             ip_range: "172.16.5.0/24"
           - name: gke-svc-range
             ip_range: "172.16.6.0/24"
-            
+
   - name: vpc-network-2
     routing_mode: REGIONAL
     subnets:
@@ -39,7 +39,7 @@ gke_clusters:
     deletion_protection: false
     enable_private_endpoint: false
     master_global_access_config: true
-    gcp_public_cidrs_access_enabled: false
+    gcp_public_cidrs_access_enabled: true
     node_pools:
       pool-backend:
         min_node_count: 1
@@ -59,7 +59,7 @@ gke_clusters:
     environment: dev
     location: europe-west3-a
     vpc_name: vpc-network-2
-    subnetwork: private-subnet
+    subnetwork: mgmt-subnet
     cluster_secondary_range_name: gke-pod-range
     services_secondary_range_name: gke-svc-range
     deletion_protection: false

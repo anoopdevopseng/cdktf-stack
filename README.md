@@ -15,7 +15,7 @@ $env:PIPENV_IGNORE_VIRTUALENVS = "1"
 # For linux/mac
 ```
 export PIPENV_VENV_IN_PROJECT=1
-export PIPENV_IGNORE_VIRTUALENVS = "1"
+export PIPENV_IGNORE_VIRTUALENVS="1"
 ```
 # Run this command
 ```
@@ -29,7 +29,10 @@ dev.yaml
 preprod.yaml
 prod.yaml
 ```
-
+# Download the providers
+```
+cdktf get
+```
 ## if you are window user you can run it like this
 ```
 $env:ENV = "dev"; cdktf synth
