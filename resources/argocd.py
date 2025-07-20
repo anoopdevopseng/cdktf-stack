@@ -12,12 +12,11 @@ def setup_argocd_if_enabled(scope: Construct, gke_cfg: dict, gke_module: Terrafo
     if not gke_cfg.get("argocd", False):
         return None
 
-    google_client_config = DataGoogleClientConfig(scope, "default")
+    google_client_config = DataGoogleClientConfig(scope, f"client-config-{gke_name}")
     dns_external = gke_cfg.get("dns_allow_external_traffic", False)
     provider_alias = f"{gke_name}-argocd"
 
     endpoint_output = f"${{module.{gke_module.friendly_unique_id}.endpoint}}"
-    token_output = "${data.google_client_config.default.access_token}"
 
     ca_cert_output = None
     if not dns_external:
@@ -26,7 +25,7 @@ def setup_argocd_if_enabled(scope: Construct, gke_cfg: dict, gke_module: Terrafo
     def build_k8s_config():
         config = {
             "host": f"https://{endpoint_output}",
-            "token": token_output,
+            "token": google_client_config.access_token,
         }
         if ca_cert_output:
             config["cluster_ca_certificate"] = ca_cert_output
