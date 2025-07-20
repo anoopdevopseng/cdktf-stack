@@ -52,7 +52,7 @@ gke_clusters:
         machine_type: e2-medium
         preemptible: false
     
-  - name: testcluster
+  - name: testcluster1
     depends_on:
       - vpc-network-2
     argocd: true
