@@ -24,6 +24,14 @@ vpcs:
             ip_range: "172.4.5.0/24"
           - name: gke-svc-range
             ip_range: "172.5.6.0/24"
+nats:
+  - environment: dev
+    vpc_id: vpc-netwok-1
+    region: europe-west3
+    num_nat_ips: 4
+    subnet_ids_to_nat:
+      - private-subnet
+
 
 gke_clusters:
   - name: testcluster

@@ -21,6 +21,9 @@ class MyStack(TerraformStack):
         # Create VPCs
         vpc_outputs, all_modules = create_vpcs(self, project_id, config.get("vpcs", []))
 
+        # Create NAT and ROUTER
+        nat_outputs, all_modules = create_nats(self, project_id, config.get("nats"),[])
+
         # Create GKE clusters
         gke_outputs = create_gke_clusters(self, project_id, config.get("gke_clusters", []), all_modules)
 
