@@ -7,6 +7,7 @@ from cdktf_cdktf_provider_google.provider import GoogleProvider
 
 from resources.utils import load_config
 from resources.vpc import create_vpcs
+from resources.nat_router import create_nats
 from resources.gke import create_gke_clusters
 
 class MyStack(TerraformStack):
@@ -19,13 +20,13 @@ class MyStack(TerraformStack):
         GoogleProvider(self, "google", project=project_id, region=region)
 
         # Create VPCs
-        vpc_outputs, all_modules = create_vpcs(self, project_id, config.get("vpcs", []))
+        vpc_outputs, vpc_modules = create_vpcs(self, project_id, config.get("vpcs", []))
 
         # Create NAT and ROUTER
-        nat_outputs, all_modules = create_nats(self, project_id, config.get("nats"),[])
+        nat_outputs, nat_modules = create_nats(self, project_id, config.get("nats",[]))
 
         # Create GKE clusters
-        gke_outputs = create_gke_clusters(self, project_id, config.get("gke_clusters", []), all_modules)
+        gke_outputs = create_gke_clusters(self, project_id, config.get("gke_clusters", []), vpc_modules)
 
 
 # --- Load YAML config ---

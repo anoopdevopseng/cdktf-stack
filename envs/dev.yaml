@@ -1,4 +1,4 @@
-project_id: my-project-1
+project_id: my-project-id
 
 vpcs:
   - name: vpc-network-1
@@ -26,12 +26,18 @@ vpcs:
             ip_range: "172.5.6.0/24"
 nats:
   - environment: dev
-    vpc_id: vpc-netwok-1
+    vpc_id: vpc-network-1
     region: europe-west3
     num_nat_ips: 4
     subnet_ids_to_nat:
       - private-subnet
 
+  - environment: dev
+    vpc_id: vpc-network-2
+    region: europe-west3
+    num_nat_ips: 4
+    subnet_ids_to_nat:
+      - mgmt-subnet
 
 gke_clusters:
   - name: testcluster

@@ -17,7 +17,7 @@ def create_vpcs(scope, project_id, vpc_list):
 
         vpc_module = TerraformModule(
             scope,
-            f"vpc-{vpc_name}",
+            f"{vpc_name}",
             source="git::https://github.com/anoopdevopseng/terraform-google-vpc?ref=v0.1.0",
         )
 
