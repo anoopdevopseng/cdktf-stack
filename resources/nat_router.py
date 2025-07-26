@@ -11,9 +11,6 @@ def create_nats(scope, project_id, nat_list,vpc_modules):
         vpc_name = nat_cfg["vpc_id"]
 
         depends_on = []
-
-        if vpc_name in vpc_modules:
-            depends_on = [vpc_modules[vpc_name].fqn]
         
         # Lookup VPC self_link by name
         vpc_lookup = DataGoogleComputeNetwork(
@@ -23,8 +20,8 @@ def create_nats(scope, project_id, nat_list,vpc_modules):
             project=project_id
         )
 
-        if depends_on:
-            vpc_lookup.add_override("depends_on", depends_on)
+        if vpc_name in vpc_modules:
+            vpc_lookup.add_override("depends_on", [vpc_modules[vpc_name].node.logical_id])
 
         nat_module = TerraformModule(
             scope,
