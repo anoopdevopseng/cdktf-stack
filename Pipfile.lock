@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "ee7d0c9de8f01c2f5bbf846b12af01d462526bd7447edb5bc452033b42b52aee"
+            "sha256": "4cf7a59ec1526cec93ff7bea40a818f9fe14ab0926bbe5ab129db04ddc03ce30"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3"
+            "python_version": "3.13"
         },
         "sources": [
             {
@@ -43,12 +43,12 @@
         },
         "cdktf-cdktf-provider-google": {
             "hashes": [
-                "sha256:73773b91f854b6820ef4b3614be1985ee34df5f5fa21936e31283268635a406b",
-                "sha256:977eae0ad4d5da685c05c751b8254cafc5a275a7cdba9176412eb892a5a994ae"
+                "sha256:3396eabc12eaa42d895bfb6f905b3662c48d61b28e4e5ef62a0d7f87b33d7785",
+                "sha256:a749bd7fc6c54f2e703beb4fc15f71b48ac70ce85ec1a30b38553b67fb1b847c"
             ],
             "index": "pypi",
             "markers": "python_version ~= '3.9'",
-            "version": "==16.6.0"
+            "version": "==16.7.0"
         },
         "colorama": {
             "hashes": [

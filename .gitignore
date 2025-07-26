@@ -1,4 +1,5 @@
 dist/
+scripts/
 imports/*
 !imports/__init__.py
 .terraform
