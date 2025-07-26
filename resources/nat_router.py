@@ -1,3 +1,4 @@
+from constructs import Construct
 from cdktf import TerraformModule
 from cdktf_cdktf_provider_google.data_google_compute_network import DataGoogleComputeNetwork
 
@@ -13,15 +14,16 @@ def create_nats(scope, project_id, nat_list,vpc_modules):
         depends_on = []
         
         # Lookup VPC self_link by name
+        data_scope = Construct(scope, f"lookup-scope-{vpc_name}-{env}")
         vpc_lookup = DataGoogleComputeNetwork(
-            scope,
+            data_scope,
             f"data-{vpc_name}-{env}",
             name=vpc_name,
             project=project_id
         )
 
         if vpc_name in vpc_modules:
-            vpc_lookup.add_override("depends_on", [vpc_modules[vpc_name].node.logical_id])
+            vpc_lookup.add_override("depends_on", [f"module.{vpc_modules[vpc_name].node.id}"])
 
         nat_module = TerraformModule(
             scope,
