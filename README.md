@@ -19,14 +19,68 @@ The infrastructure is organized into three separate stacks:
 
 ## Installation
 
-1. Install dependencies:
+### Prerequisites Setup (Ubuntu/Debian)
+
+1. Install Python 3.13 and pipenv:
 ```bash
+yes | sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt-get update
+sudo apt-get install python3.13
+sudo apt-get install pipenv -y
+```
+
+2. Install CDKTF CLI:
+```bash
+npm install --global cdktf-cli@0.21.0
+```
+
+3. Set environment variables:
+```bash
+export PIPENV_VENV_IN_PROJECT=1
+export PIPENV_IGNORE_VIRTUALENVS="1"
+```
+
+4. Install project dependencies:
+```bash
+pipenv --python=/bin/python3.13 install
+```
+
+5. Download Terraform providers and modules:
+```bash
+cdktf get
+```
+
+### Prerequisites Setup (Windows)
+
+1. Install Python 3.13 from [python.org](https://www.python.org/downloads/)
+
+2. Install pipenv:
+```powershell
+pip install pipenv
+```
+
+3. Install CDKTF CLI:
+```powershell
+npm install --global cdktf-cli@0.21.0
+```
+
+4. Set environment variables:
+```powershell
+# set the environment in current directory
+$env:PIPENV_VENV_IN_PROJECT=1
+
+# Optional If pipenv install cache the old paths  
+$env:PIPENV_IGNORE_VIRTUALENVS = "1"
+```
+
+5. Install project dependencies:
+```powershell
 pipenv install
 ```
 
-2. Install CDKTF:
-```bash
-npm install -g cdktf-cli
+6. Download Terraform providers and modules:
+```powershell
+cdktf get
 ```
 
 ## Usage
