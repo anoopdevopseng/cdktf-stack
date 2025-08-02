@@ -1,6 +1,4 @@
 from cdktf import TerraformModule
-from resources.argocd import setup_argocd_if_enabled
-
 
 def create_gke_clusters(scope, project_id, gke_list, all_modules):
     gke_outputs = {}
@@ -29,6 +27,7 @@ def create_gke_clusters(scope, project_id, gke_list, all_modules):
         gke_module.add_override("cluster_secondary_range_name", gke_cfg["cluster_secondary_range_name"])
         gke_module.add_override("services_secondary_range_name", gke_cfg["services_secondary_range_name"])
         gke_module.add_override("node_pools", gke_cfg["node_pools"])
+        gke_module.add_override("argocd", gke_cfg.get("argocd", False))
         if "dns_allow_external_traffic" in gke_cfg:
             gke_module.add_override("dns_allow_external_traffic", gke_cfg["dns_allow_external_traffic"])
 
@@ -42,8 +41,6 @@ def create_gke_clusters(scope, project_id, gke_list, all_modules):
 
         if depends_on_paths:
             gke_module.add_override("depends_on", depends_on_paths)
-
-        setup_argocd_if_enabled(scope, gke_cfg, gke_module)
 
         gke_outputs[gke_name] = gke_module
 
