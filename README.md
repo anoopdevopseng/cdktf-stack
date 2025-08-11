@@ -38,7 +38,7 @@ pipenv --python=/bin/python3.13 install
 #### 4. Download Providers
 
 ```sh
-cdktf get
+cdktf get --force
 ```
 
 #### 5. Run CDKTF Commands
@@ -73,7 +73,7 @@ pipenv install
 #### 3. Download Providers
 
 ```powershell
-cdktf get
+cdktf get --force
 ```
 
 #### 4. Run CDKTF Commands
