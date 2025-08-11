@@ -1,4 +1,4 @@
-# cdktf-stack
+# **cdktf-stack**
 
 ## Requirements
 
@@ -8,9 +8,9 @@
 
 ---
 
-## Setup Instructions
+# **Setup Instructions**
 
-### Linux/macOS
+## **Linux/macOS**
 
 #### 1. Install Dependencies
 
@@ -55,7 +55,7 @@ ENV=prod cdktf synth
 
 ---
 
-### Windows (PowerShell)
+## **Windows (PowerShell)**
 
 #### 1. Set Environment Variables
 
@@ -101,7 +101,7 @@ Remove-Item Env:ENV
 
 ---
 
-## Environments
+## **Environments**
 
 Your environment files should be placed under the **envs** folder:
 
