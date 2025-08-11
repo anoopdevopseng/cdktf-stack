@@ -1,4 +1,5 @@
 from cdktf import TerraformModule
+from imports.vpc import Vpc as vpc
 
 def create_vpcs(scope, project_id, vpc_list):
     vpc_outputs = {}
@@ -15,16 +16,14 @@ def create_vpcs(scope, project_id, vpc_list):
             for name, val in vpc_cfg.get("subnets", {}).items()
         }
 
-        vpc_module = TerraformModule(
+        vpc_module = vpc(
             scope,
             f"vpc-{vpc_name}",
-            source="git::https://github.com/anoopdevopseng/terraform-google-vpc?ref=v0.1.0",
+            project_id=project_id,
+            name=vpc_name,
+            subnets=subnets_input
         )
-
-        vpc_module.add_override("project_id", project_id)
-        vpc_module.add_override("name", vpc_name)
         vpc_module.add_override("routing_mode", vpc_cfg.get("routing_mode", "REGIONAL"))
-        vpc_module.add_override("subnets", subnets_input)
 
         vpc_outputs[vpc_name] = vpc_module
         all_modules[vpc_name] = vpc_module

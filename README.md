@@ -1,4 +1,4 @@
-# cdktf-stack
+# **cdktf-stack**
 
 ## Requirements
 
@@ -8,9 +8,9 @@
 
 ---
 
-## Setup Instructions
+# **Setup Instructions**
 
-### Linux/macOS
+## **Linux/macOS**
 
 #### 1. Install Dependencies
 
@@ -38,7 +38,7 @@ pipenv --python=/bin/python3.13 install
 #### 4. Download Providers
 
 ```sh
-cdktf get
+cdktf get --force
 ```
 
 #### 5. Run CDKTF Commands
@@ -55,7 +55,7 @@ ENV=prod cdktf synth
 
 ---
 
-### Windows (PowerShell)
+## **Windows (PowerShell)**
 
 #### 1. Set Environment Variables
 
@@ -73,7 +73,7 @@ pipenv install
 #### 3. Download Providers
 
 ```powershell
-cdktf get
+cdktf get --force
 ```
 
 #### 4. Run CDKTF Commands
@@ -101,7 +101,7 @@ Remove-Item Env:ENV
 
 ---
 
-## Environments
+## **Environments**
 
 Your environment files should be placed under the **envs** folder:
 

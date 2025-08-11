@@ -1,6 +1,7 @@
 from constructs import Construct
 from cdktf import TerraformModule
 from cdktf_cdktf_provider_google.data_google_compute_network import DataGoogleComputeNetwork
+from imports.nat import Nat as nat_router
 
 
 def create_nats(scope, project_id, nat_list,vpc_modules):
@@ -25,18 +26,17 @@ def create_nats(scope, project_id, nat_list,vpc_modules):
         if vpc_name in vpc_modules:
             vpc_lookup.add_override("depends_on", [f"module.{vpc_modules[vpc_name].node.id}"])
 
-        nat_module = TerraformModule(
+        nat_module = nat_router(
             scope,
             f"{vpc_name}-nat-{env}",
-            source="git::https://github.com/anoopdevopseng/terraform-google-cloudnat?ref=v0.1.0"
+            project_id=project_id,
+            environment=env,
+            subnet_ids_to_nat=nat_cfg["subnet_ids_to_nat"],
+            vpc_id=vpc_lookup.self_link
         )
 
-        nat_module.add_override("project_id", project_id)
-        nat_module.add_override("environment", env)
         nat_module.add_override("region", nat_cfg["region"])
-        nat_module.add_override("vpc_id", vpc_lookup.self_link)
         nat_module.add_override("num_nat_ips", nat_cfg.get("num_nat_ips", 1))
-        nat_module.add_override("subnet_ids_to_nat", nat_cfg["subnet_ids_to_nat"])
 
         nat_modules[env] = nat_module
         all_modules[env] = nat_module
