@@ -3,13 +3,20 @@
   "app": "pipenv run python main.py",
   "projectId": "ddd15a05-6d1d-4578-b6c4-e18830cede26",
   "sendCrashReports": "false",
-  "terraformProviders": [
-    "hashicorp/kubernetes",
-    "hashicorp/helm@~>3.0.0"
+  "terraformProviders": [],
+  "terraformModules": [
+    {
+      "name": "gke",
+      "source": "git::https://github.com/anoopdevopseng/terraform-google-gke?ref=v0.1.1"
+    },
+    {
+      "name": "nat",
+      "source": "git::https://github.com/anoopdevopseng/terraform-google-cloudnat?ref=v0.1.0"
+    },
+    {
+      "name": "vpc",
+      "source": "git::https://github.com/anoopdevopseng/terraform-google-vpc?ref=v0.1.0"
+    }
   ],
-  "terraformModules": [],
-  "codeMakerOutput": "imports",
-  "context": {
-
-  }
+  "codeMakerOutput": "imports"
 }

@@ -32,13 +32,6 @@ nats:
     subnet_ids_to_nat:
       - private-subnet
 
-  - environment: dev
-    vpc_id: vpc-network-2
-    region: europe-west3
-    num_nat_ips: 4
-    subnet_ids_to_nat:
-      - mgmt-subnet
-
 gke_clusters:
   - name: testcluster
     depends_on:
@@ -68,12 +61,12 @@ gke_clusters:
     
   - name: testcluster1
     depends_on:
-      - vpc-network-2
+      - vpc-network-1
     argocd: true
     environment: dev
     location: europe-west3-a
-    vpc_name: vpc-network-2
-    subnetwork: mgmt-subnet
+    vpc_name: vpc-network-1
+    subnetwork: private-subnet
     cluster_secondary_range_name: gke-pod-range
     services_secondary_range_name: gke-svc-range
     deletion_protection: false
